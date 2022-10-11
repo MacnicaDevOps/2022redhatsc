@@ -5,7 +5,7 @@ executors:
     machine: true
   deployer:
     docker:
-      - image: minepicco/cc-build-image:latest
+      - image: minepicco/cci-build-image:latest
 
 workflows:
   version: 2.1
@@ -83,14 +83,14 @@ jobs:
       - setup_remote_docker
 
       - run:
-          name: Configure gcloud cli
+          name: Configure authentications
           command: |
             echo $key>key.json
-            gcloud auth activate-service-account --key-file=key.json
-            gcloud beta container clusters get-credentials $cluster --region $region --project $project
+            rh auth activate-service-account --key-file=key.json
+            rh beta container clusters get-credentials $cluster --region $region --project $project
             
       - run:
-          name: Create Kubernetes Manifest
+          name: Create OpenShift Manifest
           command: |
             build_num=$((${CIRCLE_BUILD_NUM} - 1))
             deploy_image="${imagename}/${CIRCLE_PROJECT_REPONAME,,}:${build_num}"
@@ -99,5 +99,5 @@ jobs:
       - run:
           name: deployment
           command: |
-            kubectl apply -f web.yaml
-            kubectl get pods -n "${CIRCLE_PROJECT_REPONAME,,}"
+            oc apply -f web.yaml
+            oc get pods -n "${CIRCLE_PROJECT_REPONAME,,}"
