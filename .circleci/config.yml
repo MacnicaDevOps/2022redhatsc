@@ -88,6 +88,7 @@ jobs:
             chmod +x auth.sh
             ./auth.sh
             source ~/.bashrc
+            alias -p
 #            echo $key>key.json
 #            rh auth activate-service-account --key-file=key.json
 #            rh beta container clusters get-credentials $cluster --region $region --project $project
@@ -102,5 +103,6 @@ jobs:
       - run:
           name: deployment
           command: |
+            alias -p
             oc apply -f web.yaml
             oc get pods -n "${CIRCLE_PROJECT_REPONAME,,}"
