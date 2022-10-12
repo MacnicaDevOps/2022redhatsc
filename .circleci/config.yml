@@ -5,7 +5,7 @@ executors:
     machine: true
   deployer:
     docker:
-      - image: minepicco/cci-build:latest
+      - image: minepicco/cc-build-image:latest
 
 workflows:
   version: 2.1
@@ -85,9 +85,11 @@ jobs:
       - run:
           name: Configure authentications
           command: |
-            echo $key>key.json
-            rh auth activate-service-account --key-file=key.json
-            rh beta container clusters get-credentials $cluster --region $region --project $project
+            chmod +x auth.sh
+            ./auth.sh
+#            echo $key>key.json
+#            rh auth activate-service-account --key-file=key.json
+#            rh beta container clusters get-credentials $cluster --region $region --project $project
             
       - run:
           name: Create OpenShift Manifest
