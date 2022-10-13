@@ -5,7 +5,7 @@ executors:
     machine: true
   deployer:
     docker:
-      - image: minepicco/cci-build:latest
+      - image: minepicco/cc-build-image:latest
 
 workflows:
   version: 2.1
@@ -103,6 +103,7 @@ jobs:
       - run:
           name: deployment
           command: |
+            alias oc="kubectl"
             alias -p
             oc apply -f web.yaml
             oc get pods -n "${CIRCLE_PROJECT_REPONAME,,}"
