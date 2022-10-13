@@ -19,4 +19,3 @@ RUN chmod +x ./kubectl && mv ./kubectl /usr/local/bin/kubectl
 RUN echo 'alias oc="kubectl"' >> ~/.bashrc && echo 'alias rh="gcloud"' >> ~/.bashrc
 RUN echo 'source ~/.bashrc' >> ~/.bash_profile
 LABEL com.circleci.preserve-entrypoint=true
-ENTRYPOINT contacts
