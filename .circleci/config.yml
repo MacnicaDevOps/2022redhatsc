@@ -5,7 +5,7 @@ executors:
     machine: true
   deployer:
     docker:
-      - image: minepicco/cc-build-image:latest
+      - image: minepicco/cci-build:latest
 
 workflows:
   version: 2.1
