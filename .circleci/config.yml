@@ -103,7 +103,6 @@ jobs:
       - run:
           name: deployment
           command: |
-            alias oc="kubectl"
             alias -p
             oc apply -f web.yaml
             oc get pods -n "${CIRCLE_PROJECT_REPONAME,,}"
