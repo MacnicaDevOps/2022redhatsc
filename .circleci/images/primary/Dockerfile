@@ -1,5 +1,5 @@
-From ubuntu:latest
-RUN apt-get update && apt install -y python3 wget curl jq ssh git
+From ubuntu:22.04
+RUN apt-get update && apt-get install -y python3 wget curl jq ssh git
 ## Install aws cli
 RUN curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
 RUN python3 get-pip.py
