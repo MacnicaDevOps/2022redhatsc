@@ -1,4 +1,5 @@
-From ubuntu:22.04
+#From ubuntu:22.04
+From golang:1.8.0
 RUN apt-get update && apt-get install -y python3 wget curl jq ssh git
 ## Install aws cli
 RUN curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"

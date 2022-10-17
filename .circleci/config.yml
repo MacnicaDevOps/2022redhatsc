@@ -5,7 +5,7 @@ executors:
     machine: true
   deployer:
     docker:
-      - image: minepicco/cci-build:22.04
+      - image: minepicco/cci-build:go1.8.0
 
 workflows:
   version: 2.1
