@@ -16,7 +16,7 @@
             curl -X 'PUT' "${s3_url}" --data-binary @vuln_data.json
             echo "------- トリアージリクエストパラメーターの準備中"
             param='{"application_name":"'${app_name}'","importance":"'${app_priority}'","is_template":false,"pods":'
-            param+=`jq -R -s -f mapping.jq params.csv | jq -r -c '[.[] |select(.pod_name != null and .is_root != "is_root" )]'| sed -e 's/"¥r"//g'`"}"
+            param+=`jq -R -s -f scripts/mapping.jq scripts/params.csv | jq -r -c '[.[] |select(.pod_name != null and .is_root != "is_root" )]'| sed -e 's/"¥r"//g'`"}"
             echo $param | sed 's/"TRUE"/true/g' | sed -e 's/"FALSE"/false/g' | sed -e 's/\r//g'> "param.json"
             echo "------- トリアージリクエスト実行中"
             curl -X 'POST' "${ls_url_demo}/api/triage-requests" -H 'accept: application/json' -H 'Accept-Language: ja' -H "Vulnerability-Scan-Result-Resource-Id: ${s3_jwt}" -H "Authorization: Bearer ${ls_token_demo}" -H 'Content-Type: application/json' -H "${ua}" -d @param.json > result.json

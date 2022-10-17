@@ -8,7 +8,6 @@ executors:
       - image: minepicco/cci-build:22.04
 
 workflows:
-  
   build-deploy:
     jobs:
       - build_scan:
@@ -55,8 +54,8 @@ jobs:
       - run:
           name: "Triage vulnerabilities"
           command: |
-            chmod +x triage.sh
-            ./triage.sh
+            chmod +x scripts/triage.sh
+            sh scripts/triage.sh
 
       - run:
           name: Publish Image
@@ -84,8 +83,8 @@ jobs:
       - run:
           name: Configure authentications
           command: |
-            chmod +x auth.sh
-            ./auth.sh
+            chmod +x scripts/auth.sh
+            sh scripts/auth.sh
 
       - run:
           name: Create OpenShift Manifest
