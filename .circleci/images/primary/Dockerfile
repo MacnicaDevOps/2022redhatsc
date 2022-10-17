@@ -14,6 +14,6 @@ RUN apt-get update && apt-get install -y google-cloud-sdk
 RUN apt-get install google-cloud-sdk-gke-gcloud-auth-plugin
 ## Install kubectl
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
-RUN chmod +x ./kubectl && mv ./kubectl /usr/local/bin/kubectl
+RUN chmod +x ./kubectl && mv ./kubectl /usr/local/bin/kubectl && cp /usr/local/bin/kubectl /usr/local/bin/oc
 RUN echo 'alias oc="kubectl"' >> ~/.bashrc
 RUN echo 'source ~/.bashrc' >> ~/.bash_profile
