@@ -54,8 +54,8 @@ jobs:
       - run:
           name: "Triage vulnerabilities"
           command: |
-            chmod +x scripts/triage.sh
-            sh scripts/triage.sh
+            chmod +x triage.sh
+            sh triage.sh
 
       - run:
           name: Publish Image
