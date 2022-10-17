@@ -8,7 +8,6 @@ executors:
       - image: minepicco/cci-build:22.04
 
 workflows:
-  version: 2.1
   
   build-deploy:
     jobs:
@@ -87,12 +86,7 @@ jobs:
           command: |
             chmod +x auth.sh
             ./auth.sh
-            source ~/.bashrc
-            alias -p
-#            echo $key>key.json
-#            rh auth activate-service-account --key-file=key.json
-#            rh beta container clusters get-credentials $cluster --region $region --project $project
-            
+
       - run:
           name: Create OpenShift Manifest
           command: |
@@ -103,6 +97,5 @@ jobs:
       - run:
           name: deployment
           command: |
-            alias -p
             oc apply -f web.yaml
             oc get pods -n "${CIRCLE_PROJECT_REPONAME,,}"
