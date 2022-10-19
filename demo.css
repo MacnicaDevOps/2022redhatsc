@@ -1,4 +1,10 @@
 body {
-    background-color: #222;
+    background-color: #000;
     color: #fff;
+}
+img {
+    margin: 20px;
+}
+.footer {
+    margin-top: 20px;
 }
