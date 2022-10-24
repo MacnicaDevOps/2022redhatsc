@@ -45,7 +45,7 @@ jobs:
             docker stop web
 
       - run:
-          name: "Twistlock Vuln/Compliance check"
+          name: "Prisma Cloud Vuln/Compliance check"
           command: |
             curl -k -u "${pc_user}:${pc_pass}" --output twistcli "${pc_url}/api/v1/util/twistcli" 
             chmod a+x twistcli
