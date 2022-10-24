@@ -5,10 +5,8 @@ body {
 img {
     margin: auto;
 }
-img.rhlogo {
-    display: inline;
-    margin-bottom: 80px;
-    width: 300px;
+img.mlogo {
+    width: 400px;
 }
 img.rhlogo {
     display: inline;
